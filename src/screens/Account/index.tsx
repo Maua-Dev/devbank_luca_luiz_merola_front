@@ -1,7 +1,13 @@
+import { Header } from "../../components/header";
+
 export function Account() {
     return (
+        <>
+        <Header/>
+        
         <main>
-            <h1>account</h1>
+            
         </main>
+        </>
     )
 }
