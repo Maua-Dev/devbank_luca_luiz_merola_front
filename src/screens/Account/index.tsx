@@ -41,7 +41,6 @@ export function Account() {
             placeholder="Coloque seu endpoint aqui"
           />
         </section>
-                
       </main>
     </>
   );
