@@ -35,8 +35,13 @@ export function Account() {
             </button>
           </section>
 
-          
+          <input
+            className="w-full p-4 text-xl font-semibold text-black rounded-xl border border-black mt-8"
+            type="text"
+            placeholder="Coloque seu endpoint aqui"
+          />
         </section>
+                
       </main>
     </>
   );
