@@ -27,9 +27,16 @@ export function Account() {
                 <img src={ImgSaque} alt="" />
               </button>
             </div>
+            <button className="bg-black flex rounded-3xl">
+              <span className="text-white text-xl m-4 absolute">
+                {"\\> transferência"}
+              </span>
+              <img src={ImgTransferencia} alt="" />
+            </button>
+          </section>
 
+          
         </section>
-        
       </main>
     </>
   );
