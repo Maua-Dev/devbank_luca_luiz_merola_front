@@ -1,7 +1,7 @@
 import { Header } from "../../components/header";
-import { ImgDeposito } from "../../assets/ImgTransferencia.png";
-import { ImgSaque } from "../../assets/ImgSaque.png";
-import { ImgTransferencia } from "../../assets/ImgTransferencia.png";
+import ImgDeposito from "../../assets/ImgTransferencia.png";
+import ImgSaque from "../../assets/ImgSaque.png";
+import ImgTransferencia from "../../assets/ImgTransferencia.png";
 
 export function Account() {
   return (

@@ -1,6 +1,6 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { Home } from './screens/Home'
-import { Account } from './screens/Account'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Home } from './screens/Home';
+import { Account } from './screens/Account';
 
 export function App() {
   return (
@@ -10,5 +10,5 @@ export function App() {
         <Route path='/Conta' element={<Account/>}/>
       </Routes>
     </Router>
-  )
+  );
 }
