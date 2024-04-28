@@ -3,7 +3,7 @@ import { Header } from "../../components/header";
 import ValuePanel from "../../components/valuePanel";
 import DepositButton from "../../components/depositButton";
 
-let valueQtys: { [key: number]: number } = {
+const valueQtys: { [key: number]: number } = {
     2: 0,
     5: 0,
     10: 0,

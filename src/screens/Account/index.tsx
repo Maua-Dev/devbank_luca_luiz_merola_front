@@ -1,9 +1,40 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import { Header } from "../../components/header";
 import ImgDeposito from "../../assets/ImgDeposito.png";
 import ImgSaque from "../../assets/ImgSaque.png";
 import ImgTransferencia from "../../assets/ImgTransferencia.png";
+import { useContext, useEffect, useState } from "react";
+import { BankContext } from "../../context/bank_context";
+
+export type dataType = {
+  name: string,
+  current_balance: number,
+  agency: string,
+  account: string
+}
 
 export function Account() {
+  const [data, setData] = useState<dataType>({
+    name: '',
+    current_balance: 0,
+    agency: '',
+    account: ''
+  });
+
+  const { getAccount } = useContext(BankContext);
+
+  async function Account() {
+      const response = await getAccount();
+      response && setData(response as dataType);
+      response && localStorage.setItem('name', (response as dataType).name);
+      // console.log(response);
+  }
+
+  useEffect(() => {
+    Account();
+  }, [])
+
   return (
     <>
       <Header />
@@ -12,7 +43,7 @@ export function Account() {
         <section className="max-w-[612px]">
           <div className="flex flex-col gap-2 mb-8">
             <h2 className="font-bold font-['Inter'] text-zinc-950 text-2xl">Conta</h2>
-            <span className="font-bold text-3xl font-['Inter'] text-zinc-950">R$ 1.356,98</span>
+            <span className="font-bold text-3xl font-['Inter'] text-zinc-950">R$ {data.current_balance}</span>
           </div>
 
           <section className="flex gap-6 max-md:flex-col">
