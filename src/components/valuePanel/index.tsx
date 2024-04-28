@@ -1,31 +1,31 @@
 import { useState } from "react";
 import { ActionButton } from "../actionButton";
 import { ReturnButton } from "../returnButton";
-import { ValueButton } from "../valueButton";
+import ValueButton from "../valueButton";
 
-type ValuePanelProps = {
+// type ValuePanelProps = {
+//     type: string;
+// }
+
+interface ValuePanelProps {
     type: string;
+    setValueQty: (value: number, qty: number) => void;
 }
 
-export function ValuePanel({type}: ValuePanelProps) {
-    const [currValue, setCurrValue] = useState(0)
-
-    function updateCurrQty (newQty: number) {
-        setCurrValue(newQty);
-    };
+const ValuePanel: React.FC<ValuePanelProps> = ({setValueQty, type}) => {
 
     return (
         <div className="flex flex-col gap-2 justify-center">
             <div className="flex gap-2">
-                <ValueButton updateCurrQty={updateCurrQty} value="2"/>
-                <ValueButton updateCurrQty={updateCurrQty} value="5"/>
-                <ValueButton updateCurrQty={updateCurrQty} value="10"/>
-                <ValueButton updateCurrQty={updateCurrQty} value="20"/>
+                <ValueButton setValueQty={setValueQty} value={2}/>
+                <ValueButton setValueQty={setValueQty} value={5}/>
+                <ValueButton setValueQty={setValueQty} value={10}/>
+                <ValueButton setValueQty={setValueQty} value={20}/>
             </div>
             <div className="flex gap-2">
-                <ValueButton value="50"/>
-                <ValueButton value="100"/>
-                <ValueButton value="200"/>
+                <ValueButton setValueQty={setValueQty} value={50}/>
+                <ValueButton setValueQty={setValueQty} value={100}/>
+                <ValueButton setValueQty={setValueQty} value={200}/>
                 <ActionButton action={type}/>
             </div>
             <div className="flex">
@@ -34,3 +34,5 @@ export function ValuePanel({type}: ValuePanelProps) {
         </div>
     )
 }
+
+export default ValuePanel;

@@ -1,7 +1,38 @@
+import { useState } from "react";
 import { Header } from "../../components/header";
-import { ValuePanel } from "../../components/valuePanel";
+import ValuePanel from "../../components/valuePanel";
+
+let valueQtys: { [key: number]: number } = {
+    2: 0,
+    5: 0,
+    10: 0,
+    20: 0,
+    50: 0,
+    100: 0,
+    200: 0
+}
 
 export function Deposit() {
+    const [depositValue, setDepositValue] = useState(0);
+
+    const possibleQtys = [2, 5, 10, 20, 50, 100, 200]
+
+    function updateDepositValue() {
+        let newDepositValue = 0;
+        let index = 0;
+        for (const value of Object.values(valueQtys)) {
+            newDepositValue += value*possibleQtys[index];
+            index += 1;
+        }
+        console.log(valueQtys);
+        setDepositValue(newDepositValue);
+    }
+
+    function setValueQty(value: number, qty: number) {
+        valueQtys[value] = qty;
+        updateDepositValue();
+    }
+
     return (
         <>
             <Header/>
@@ -15,10 +46,10 @@ export function Deposit() {
                         </div>
                         <div className="flex flex-col gap-2 mb-8">
                             <h2 className="font-bold font-['Inter'] text-zinc-950 text-2xl">Quantidade</h2>
-                            <span className="font-bold text-3xl font-['Inter'] text-zinc-950">R$ 0,00</span>
+                            <span className="font-bold text-3xl font-['Inter'] text-zinc-950">R$ {depositValue},00</span>
                         </div>
                     </div>
-                    <ValuePanel type="depositar"/>
+                    <ValuePanel setValueQty={setValueQty} type="depositar"/>
                 </section>
 
 

@@ -1,27 +1,36 @@
 import React, { useState } from "react"
 
 interface ValueButtonProps {
-    updateCurrQty: (newCurrQty: number) => {};
+    value: number;
+    setValueQty: (value: number, qty: number) => void;
 }
 
-const ValueButton: React.FC<ValueButtonProps> = ({updateCurrQty}) => {
+const ValueButton: React.FC<ValueButtonProps> = ({setValueQty, value}) => {
     const [showModal, setShowModal] = useState(false);
-    const [valueQty , setValueQty] = useState(0);
-    let value = 0;
+    const [newValueQty , setNewValueQty] = useState(0);
+    const [currValueQty , setCurrValueQty] = useState(0);
 
     function add() {
-        setValueQty(valueQty + 1);
+        setNewValueQty(newValueQty + 1);
     }
 
     function subtract() {
-        if (valueQty > 0) {
-            setValueQty(valueQty - 1);
+        if (newValueQty > 0) {
+            setNewValueQty(newValueQty - 1);
         }
+    }
+
+    function confirmQty() {
+        setCurrValueQty(newValueQty);
+    }
+
+    function updateNewQty() {
+        setNewValueQty(currValueQty);
     }
 
     return (
         <>
-            <button className="bg-zinc-950 flex flex-col gap-6 rounded-2xl max-w-40 min-w-40 p-4" onClick={() => setShowModal(true)}>
+            <button className="bg-zinc-950 flex flex-col gap-6 rounded-2xl max-w-40 min-w-40 p-4" onClick={() => {setShowModal(true); updateNewQty()}}>
                 <div className="money text-start text-zinc-100 mt-2">
                     <div className="value font-['Inter'] font-light">
                         <span className="text-5xl tracking-tight">
@@ -37,7 +46,7 @@ const ValueButton: React.FC<ValueButtonProps> = ({updateCurrQty}) => {
                 </div>
                 <div className="qty bg-zinc-100 w-full rounded-3xl text-3xl py-2">
                     <span className="font-['Montserrat'] text-zinc-950">
-                        {valueQty}
+                        {currValueQty}
                     </span>
                 </div>
             </button>
@@ -54,7 +63,7 @@ const ValueButton: React.FC<ValueButtonProps> = ({updateCurrQty}) => {
                                     -
                                 </button>
                                 <div className="current-number font-[montserrat] text-7xl text-center min-w-40 mt-1">
-                                    {valueQty}
+                                    {newValueQty}
                                 </div>
                                 <button className="add font-[inter] bg-zinc-950 text-zinc-100 text-4xl min-w-16 rounded-xl" onClick={add}>
                                     +
@@ -64,14 +73,18 @@ const ValueButton: React.FC<ValueButtonProps> = ({updateCurrQty}) => {
                                 <button
                                     className="text-zinc-950 background-transparent px-6 py-2 text-xl mr-1 mb-1"
                                     type="button"
-                                    onClick={() => setShowModal(false)}
+                                    onClick={() => {setShowModal(false)}}
                                 >
                                     Cancelar
                                 </button>
                                 <button
                                     className="text-zinc-100 bg-zinc-950 text-xl px-6 py-3 rounded-xl shadowmr-1 mb-1"
                                     type="button"
-                                    onClick={() => {setShowModal(false); updateCurrQty(valueQty);}}
+                                    onClick={() => {
+                                        setShowModal(false); 
+                                        confirmQty(); 
+                                        setValueQty(value, newValueQty);
+                                    }}
                                 >
                                     Confirmar
                                 </button>
