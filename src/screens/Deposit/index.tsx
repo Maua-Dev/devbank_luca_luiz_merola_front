@@ -36,7 +36,6 @@ export function Deposit() {
     return (
         <>
             <Header/>
-
             <main className="flex justify-center p-8">
                 <section className="flex flex-col">
                     <div className="flex space-x-[49%]">
@@ -51,8 +50,6 @@ export function Deposit() {
                     </div>
                     <ValuePanel setValueQty={setValueQty} functionButton={DepositButton}/>
                 </section>
-
-
             </main>
         </>
     )
