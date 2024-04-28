@@ -3,6 +3,7 @@ import { Home } from './screens/Home';
 import { Account } from './screens/Account';
 import { Deposit } from './screens/Deposit';
 import { Withdraw } from './screens/Withdraw';
+import { TransactionHistory } from './screens/TransactionHistory';
 
 export function App() {
   return (
@@ -12,6 +13,7 @@ export function App() {
         <Route path='/conta' element={<Account/>}/>
         <Route path='/deposito' element={<Deposit/>}/>
         <Route path='/saque' element={<Withdraw/>}/>
+        <Route path='/transacoes' element={<TransactionHistory/>}/>
       </Routes>
     </Router>
   );
