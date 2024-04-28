@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Header } from "../../components/header";
 import ValuePanel from "../../components/valuePanel";
-import DepositButton from "../../components/depositButton";
+import WithdrawButton from "../../components/withdrawButton";
 
 let valueQtys: { [key: number]: number } = {
     2: 0,
@@ -13,24 +13,23 @@ let valueQtys: { [key: number]: number } = {
     200: 0
 }
 
-export function Deposit() {
-    const [depositValue, setDepositValue] = useState(0);
-
+export function Withdraw() {
+    const [withdrawValue, setWithdrawValue] = useState(0);
     const possibleQtys = [2, 5, 10, 20, 50, 100, 200]
 
-    function updateDepositValue() {
-        let newDepositValue = 0;
+    function updateWithdrawValue() {
+        let newWithdrawValue = 0;
         let index = 0;
         for (const value of Object.values(valueQtys)) {
-            newDepositValue += value*possibleQtys[index];
+            newWithdrawValue += value*possibleQtys[index];
             index += 1;
         }
-        setDepositValue(newDepositValue);
+        setWithdrawValue(newWithdrawValue);
     }
 
     function setValueQty(value: number, qty: number) {
         valueQtys[value] = qty;
-        updateDepositValue();
+        updateWithdrawValue();
     }
 
     return (
@@ -46,13 +45,11 @@ export function Deposit() {
                         </div>
                         <div className="flex flex-col gap-2 mb-8">
                             <h2 className="font-bold font-['Inter'] text-zinc-950 text-2xl">Quantidade</h2>
-                            <span className="font-bold text-3xl font-['Inter'] text-zinc-950">R$ {depositValue},00</span>
+                            <span className="font-bold text-3xl font-['Inter'] text-zinc-950">R$ {withdrawValue},00</span>
                         </div>
                     </div>
-                    <ValuePanel setValueQty={setValueQty} functionButton={DepositButton}/>
+                    <ValuePanel setValueQty={setValueQty} functionButton={WithdrawButton}/>
                 </section>
-
-
             </main>
         </>
     )

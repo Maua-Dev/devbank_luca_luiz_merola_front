@@ -17,25 +17,25 @@ export function Account() {
 
           <section className="flex gap-6 max-md:flex-col">
             <div className="flex flex-col gap-6">
-              <button className="bg-black flex rounded-3xl">
+              <a className="bg-black flex rounded-3xl" href="/deposito">
                 <span className="text-white text-xl m-4 absolute">
                   {"\\>depósito"}
                 </span>
                 <img src={ImgDeposito} alt="Depósito" />
-              </button>
-              <button className="bg-black flex rounded-3xl">
+              </a>
+              <a className="bg-black flex rounded-3xl" href="/saque">
                 <span className="text-white text-xl m-4 absolute">
                   {"\\>saque"}
                 </span>
                 <img src={ImgSaque} alt="Saque" />
-              </button>
+              </a>
             </div>
-            <button className="bg-black flex rounded-3xl">
+            <a className="bg-black flex rounded-3xl" href="/transacoes">
               <span className="text-white text-xl m-4 absolute">
-                {"\\>transferência"}
+                {"\\>transações"}
               </span>
               <img src={ImgTransferencia} alt="Transferência" />
-            </button>
+            </a>
           </section>
 
           <input
