@@ -59,13 +59,13 @@ const ValueButton: React.FC<ValueButtonProps> = ({setValueQty, value}) => {
                                 <h3 className="text-xl font-[Inter] text-zinc-100 font-semibold">Quantas notas de {value},00 R$?</h3>
                             </div>
                             <div className="counter flex mb-24 align-middle justify-center">
-                                <button className="subtract font-[inter] bg-zinc-950 text-zinc-100 text-4xl min-w-16 rounded-xl" onClick={subtract}>
+                                <button className="subtract font-[inter] bg-zinc-950 text-zinc-100 text-4xl min-w-16 max-h-16 rounded-xl" onClick={subtract}>
                                     -
                                 </button>
-                                <div className="current-number font-[montserrat] text-7xl text-center min-w-40 mt-1">
+                                <div className="current-number font-[montserrat] text-7xl text-center min-w-40">
                                     {newValueQty}
                                 </div>
-                                <button className="add font-[inter] bg-zinc-950 text-zinc-100 text-4xl min-w-16 rounded-xl" onClick={add}>
+                                <button className="add font-[inter] bg-zinc-950 text-zinc-100 text-4xl min-w-16 max-h-16 rounded-xl" onClick={add}>
                                     +
                                 </button>
                             </div>

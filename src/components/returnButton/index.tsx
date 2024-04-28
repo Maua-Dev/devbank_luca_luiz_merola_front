@@ -1,10 +1,15 @@
+interface ReturnButtonProps {
+    route: string;
+}
 
-export function ReturnButton() {
+const ReturnButton: React.FC<ReturnButtonProps> = ({route}) => {
     return (
-        <button className="rounded-2xl text-center p-4 max-w-40 min-w-40">
+        <a className="rounded-2xl text-center p-4 max-w-40 min-w-40" href={route}>
                 <div className="font-['Montserrat'] text-2xl text-zinc-950">
                     Voltar
                 </div>
-        </button>
+        </a>
     )
 }
+
+export default ReturnButton;

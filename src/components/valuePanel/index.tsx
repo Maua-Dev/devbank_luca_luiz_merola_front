@@ -1,19 +1,14 @@
-import { useState } from "react";
-import { ActionButton } from "../actionButton";
-import { ReturnButton } from "../returnButton";
+import WithdrawButton from "../withdrawButton";
+import ReturnButton from "../returnButton";
 import ValueButton from "../valueButton";
-
-// type ValuePanelProps = {
-//     type: string;
-// }
+import { ReactNode } from "react";
 
 interface ValuePanelProps {
-    type: string;
     setValueQty: (value: number, qty: number) => void;
+    functionButton: () => JSX.Element;
 }
 
-const ValuePanel: React.FC<ValuePanelProps> = ({setValueQty, type}) => {
-
+const ValuePanel: React.FC<ValuePanelProps> = ({setValueQty, functionButton}) => {
     return (
         <div className="flex flex-col gap-2 justify-center">
             <div className="flex gap-2">
@@ -26,10 +21,10 @@ const ValuePanel: React.FC<ValuePanelProps> = ({setValueQty, type}) => {
                 <ValueButton setValueQty={setValueQty} value={50}/>
                 <ValueButton setValueQty={setValueQty} value={100}/>
                 <ValueButton setValueQty={setValueQty} value={200}/>
-                <ActionButton action={type}/>
+                {functionButton()}
             </div>
             <div className="flex">
-                <ReturnButton/>
+                <ReturnButton route="/conta"/>
             </div>
         </div>
     )
