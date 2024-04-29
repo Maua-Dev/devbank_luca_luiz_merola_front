@@ -5,6 +5,7 @@ export type BankContextType = {
     getAccount: () => Promise<object | undefined>
     getHistory: () => Promise<[] | undefined>
     postDeposit: (json: DepositType) => Promise<object | undefined>
+    postWithdraw: (json: DepositType) => Promise<object | undefined>
 }
 
 const defaultBankContext: BankContextType = {
@@ -15,6 +16,9 @@ const defaultBankContext: BankContextType = {
         return [];
     },
     postDeposit: async () => {
+        return {};
+    },
+    postWithdraw: async () => {
         return {};
     }
 }
@@ -51,8 +55,17 @@ export function BankContextProvider({ children }: PropsWithChildren) {
         }
     }
 
+    async function postWithdraw(json: DepositType) {
+        try {
+            const response = await bankRepository.postWithdraw(json);
+            return response;
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
-        <BankContext.Provider value={{ getAccount, getHistory, postDeposit }}>
+        <BankContext.Provider value={{ getAccount, getHistory, postDeposit, postWithdraw }}>
             {children}
         </BankContext.Provider>
     );

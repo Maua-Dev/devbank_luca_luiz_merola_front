@@ -93,7 +93,7 @@ export function Deposit() {
                             <span className="font-bold text-3xl font-['Inter'] text-zinc-950">R$ {depositValue},00</span>
                         </div>
                     </div>
-                    <ValuePanel setValueQty={setValueQty} functionButton={deposit} />
+                    <ValuePanel setValueQty={setValueQty} functionButton={deposit} text={"Depositar"}/>
                 </section>
             </main>
         </>

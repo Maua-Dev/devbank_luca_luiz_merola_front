@@ -39,4 +39,13 @@ export class BankRepositoryHttp {
             console.log(error.message)
         }
     }
+
+    async postWithdraw(json: DepositType) {
+        try {
+            const response = await http.post('/withdraw', json);
+            return response.data;
+        } catch (error: any) {
+            console.log(error.message)
+        }
+    }
 }
