@@ -2,7 +2,7 @@ import ReturnButton from "../returnButton";
 import ValueButton from "../valueButton";
 interface ValuePanelProps {
     setValueQty: (value: number, qty: number) => void;
-    functionButton: () => JSX.Element;
+    functionButton: () => void;
 }
 
 const ValuePanel: React.FC<ValuePanelProps> = ({ setValueQty, functionButton }) => {
@@ -18,7 +18,12 @@ const ValuePanel: React.FC<ValuePanelProps> = ({ setValueQty, functionButton }) 
                 <ValueButton setValueQty={setValueQty} value={50} />
                 <ValueButton setValueQty={setValueQty} value={100} />
                 <ValueButton setValueQty={setValueQty} value={200} />
-                {functionButton()}
+                <button onClick={()=>functionButton()} className="bg-black gap-6 rounded-2xl p-4 max-w-40 min-w-40">
+                    <div className="font-['Montserrat'] text-2xl origin-bottom-left text-zinc-100">
+                        Depositar
+                    </div>
+                </button>
+                {/* {functionButton()} */}
             </div>
             <div className="flex">
                 <ReturnButton route="/conta" />

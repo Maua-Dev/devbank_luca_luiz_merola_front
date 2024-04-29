@@ -1,9 +1,10 @@
 import { PropsWithChildren, createContext } from "react";
-import { BankRepositoryHttp } from "../api/repositories/bank_repository_http";
+import { BankRepositoryHttp, DepositType } from "../api/repositories/bank_repository_http";
 
 export type BankContextType = {
     getAccount: () => Promise<object | undefined>
     getHistory: () => Promise<[] | undefined>
+    postDeposit: (json: DepositType) => Promise<object | undefined>
 }
 
 const defaultBankContext: BankContextType = {
@@ -12,6 +13,9 @@ const defaultBankContext: BankContextType = {
     },
     getHistory: async () => {
         return [];
+    },
+    postDeposit: async () => {
+        return {};
     }
 }
 
@@ -38,8 +42,17 @@ export function BankContextProvider({ children }: PropsWithChildren) {
         }
     }
 
+    async function postDeposit(json: DepositType) {
+        try {
+            const response = await bankRepository.postDeposit(json);
+            return response;
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
-        <BankContext.Provider value={{ getAccount, getHistory }}>
+        <BankContext.Provider value={{ getAccount, getHistory, postDeposit }}>
             {children}
         </BankContext.Provider>
     );

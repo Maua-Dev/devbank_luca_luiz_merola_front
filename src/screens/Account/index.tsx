@@ -43,7 +43,7 @@ export function Account() {
         <section className="max-w-[612px]">
           <div className="flex flex-col gap-2 mb-8">
             <h2 className="font-bold font-['Inter'] text-zinc-950 text-2xl">Conta</h2>
-            <span className="font-bold text-3xl font-['Inter'] text-zinc-950">R$ {data.current_balance}</span>
+            <span className="font-bold text-3xl font-['Inter'] text-zinc-950">R$ {data.current_balance},00</span>
           </div>
 
           <section className="flex gap-6 max-md:flex-col">
