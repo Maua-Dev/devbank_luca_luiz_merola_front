@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const http = axios.create({
-    baseURL: import.meta.env.VITE_URL_API,
+    baseURL: "https://r2tcz6zsokynb72jb6o4ffd5nm0ryfyz.lambda-url.us-west-2.on.aws/",
 });
