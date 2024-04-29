@@ -10,4 +10,13 @@ export class BankRepositoryHttp {
             console.log(error)
         }
     }
+
+    async getHistory() {
+        try {
+            const response = await http.get('/history');
+            return response.data.all_transactions;
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }

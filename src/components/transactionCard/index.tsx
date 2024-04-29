@@ -1,14 +1,17 @@
-const TransactionCard = () => {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+const TransactionCard = (json: any) => {
+    
     return (
         <>
             <button className="bg-zinc-950 flex flex-col gap-6 rounded-2xl p-4 max-w-[612px]">
                 <div className="money text-start text-zinc-100 mt-2">
-                    <div className="flex space-x-[368px] mb-4">
+                    <div className="flex justify-between mb-4">
                         <div className="transaction-type font-['Montserrat'] font-light text-2xl tracking-tight ">
-                            Depósito
+                            {json.json.type === "deposit" ? "Depósito" : json.json.type === "withdraw" ? "Saque" : ""}
                         </div>
                         <div className="curr-balance font-['Inter'] font-light text-l">
-                            01/01/2024
+                            {new Date(json.json.timestamp).getDate().toLocaleString() + "/" + new Date(json.json.timestamp).getMonth().toLocaleString() + "/" + new Date(json.json.timestamp).getFullYear()}
                         </div>
                     </div>
                     <div className="flex space-x-72">
@@ -17,7 +20,7 @@ const TransactionCard = () => {
                                 R$
                             </span>
                             <span className="text-3xl ml-2 tracking-tight">
-                                200
+                                {json.json.value}
                             </span>
                             <span className="text-xl tracking-tight">
                                 ,00
@@ -28,7 +31,7 @@ const TransactionCard = () => {
                                 Saldo no momento:
                             </div>
                             <div className="curr-balance font-['Inter'] font-light text-l">
-                                R$ 2.300,00
+                                R$ {json.json.current_balance},00
                             </div>
                         </div>
                     </div>

@@ -3,11 +3,15 @@ import { BankRepositoryHttp } from "../api/repositories/bank_repository_http";
 
 export type BankContextType = {
     getAccount: () => Promise<object | undefined>
+    getHistory: () => Promise<[] | undefined>
 }
 
 const defaultBankContext: BankContextType = {
     getAccount: async () => {
         return {};
+    },
+    getHistory: async () => {
+        return [];
     }
 }
 
@@ -24,8 +28,18 @@ export function BankContextProvider({ children }: PropsWithChildren) {
             console.log(error)
         }
     }
+
+    async function getHistory() {
+        try {
+            const response = await bankRepository.getHistory();
+            return response;
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
-        <BankContext.Provider value={{ getAccount }}>
+        <BankContext.Provider value={{ getAccount, getHistory }}>
             {children}
         </BankContext.Provider>
     );
